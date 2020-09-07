@@ -38,6 +38,7 @@ export default {
   },
   data: () => ({
     newTodo: {
+      id: '',
       title: '',
       isDone: false
     },
@@ -47,6 +48,7 @@ export default {
     addTodo: function() {
       if (this.newTodo.title === '') return;
       let item = {
+        id: new Date().getTime().toString(16),
         title: this.newTodo.title,
         isDone: this.newTodo.isDone
       };
@@ -54,12 +56,15 @@ export default {
       this.todos.push(item);
       // 空に戻しておく
       this.newTodo = {
+        id: '',
         title: '',
         isDone: false
       };
     },
-    deleteTodo: function(index) {
-      this.todos.splice(index, 1);
+    deleteTodo: function(id) {
+      this.todos = this.todos.filter(function(todo) {
+        return id !== todo.id;
+      });
     }
   }
 }

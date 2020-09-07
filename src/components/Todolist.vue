@@ -5,7 +5,7 @@
         <input type="checkbox" v-model="todo.isDone">
       </td>
       <td>{{todo.title}}</td>
-      <td><span @click="deleteTodo(index)" class="command">x</span></td>
+      <td><span @click="deleteTodo(todo.id)" class="command">x</span></td>
     </tr>
   </tbody>
 </template>
@@ -17,8 +17,8 @@ export default {
     todos: {}
   },
   methods: {
-    deleteTodo: function(index) {
-      this.$emit('delete-todo', index);
+    deleteTodo: function(id) {
+      this.$emit('delete-todo', id);
     }
   }
 }
