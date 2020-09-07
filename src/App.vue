@@ -17,6 +17,9 @@ export default {
   data: () => ({
     todos: []
   }),
+  mounted: function() {
+    this.todos = JSON.parse(localStorage.getItem('todos')) || [];
+  },
   methods: {
     addTodo: function(newTodo) {
       this.todos.push(newTodo);
@@ -26,6 +29,14 @@ export default {
         return id !== todo.id;
       });
     }
-  }
+  },
+  watch: {
+    todos: {
+      handler: function() {
+        localStorage.setItem('todos', JSON.stringify(this.todos));
+      },
+      deep: true
+    }
+  },
 }
 </script>
