@@ -1,17 +1,17 @@
 <template>
   <div id="app" class="container text-center">
     <TodoForm @add-todo="addTodo"></TodoForm>
-    <Todolist :todos="todos" @delete-todo="deleteTodo"></Todolist>
+    <TodoTable :todos="todos" @delete-todo="deleteTodo"></TodoTable>
   </div>
 </template>
 
 <script>
-import Todolist from './components/Todolist.vue'
+import TodoTable from './components/TodoTable.vue'
 import TodoForm from './components/TodoForm.vue'
 export default {
   name: 'app',
   components: {
-    Todolist,
+    TodoTable,
     TodoForm
   },
   data: () => ({

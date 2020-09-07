@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr v-for="(todo, index) in todos" :key="index">
+    <tr v-for="todo in remaining" :key="todo.id">
       <td>
         <input type="checkbox" v-model="todo.isDone">
       </td>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'Todolist',
+  name: 'TodoTable',
   props: {
     todos: {}
   },
@@ -29,6 +29,18 @@ export default {
     deleteTodo: function(id) {
       this.$emit('delete-todo', id);
     }
+  },
+  computed: {
+    remaining: function() {
+      return this.todos.filter(function(todo) {
+        return !todo.isDone;
+      });
+    },
+    completed: function() {
+      return this.todos.filter(function(todo) {
+        return todo.isDone;
+      });
+    },
   }
 }
 </script>
