@@ -1,22 +1,20 @@
 <template>
   <tbody>
     <tr v-for="(todo, index) in todos" :key="index">
-      <Todo :todo="todo" :index="index" @delete-todo="deleteTodo"></Todo>
+      <td>
+        <input type="checkbox" v-model="todo.isDone">
+      </td>
+      <td>{{todo.title}}</td>
+      <td><span @click="deleteTodo(index)" class="command">x</span></td>
     </tr>
   </tbody>
 </template>
 
 <script>
-import Todo from './Todo.vue'
 export default {
   name: 'Todolist',
-  components: {
-    Todo
-  },
   props: {
-    todos: {
-
-    }
+    todos: {}
   },
   methods: {
     deleteTodo: function(index) {
