@@ -12,20 +12,7 @@
         </div>
       </form>
     </div>
-
-    <!-- やることリスト -->
-    <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">状態</th>
-            <th scope="col">タイトル</th>
-            <th scope="col">削除</th>
-          </tr>
-        </thead>
-        <Todolist :todos="todos" @delete-todo="deleteTodo"></Todolist>
-      </table>
-    </div>
+    <Todolist :todos="todos" @delete-todo="deleteTodo"></Todolist>
   </div>
 </template>
 

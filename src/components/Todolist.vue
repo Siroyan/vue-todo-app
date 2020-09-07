@@ -1,4 +1,12 @@
 <template>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">状態</th>
+      <th scope="col">タイトル</th>
+      <th scope="col">削除</th>
+    </tr>
+  </thead>
   <tbody>
     <tr v-for="(todo, index) in todos" :key="index">
       <td>
@@ -8,6 +16,7 @@
       <td><span @click="deleteTodo(todo.id)" class="command">x</span></td>
     </tr>
   </tbody>
+</table>
 </template>
 
 <script>
