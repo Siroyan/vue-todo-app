@@ -7,21 +7,18 @@
       <th scope="col">削除</th>
     </tr>
   </thead>
-  <tbody>
-    <tr v-for="todo in remaining" :key="todo.id">
-      <td>
-        <input type="checkbox" v-model="todo.isDone">
-      </td>
-      <td>{{todo.title}}</td>
-      <td><span @click="deleteTodo(todo.id)" class="command">x</span></td>
-    </tr>
-  </tbody>
+  <TodoList :todos="remaining" @delete-todo="deleteTodo"></TodoList>
+  <TodoList :todos="completed" @delete-todo="deleteTodo"></TodoList>
 </table>
 </template>
 
 <script>
+import TodoList from './TodoList.vue'
 export default {
   name: 'TodoTable',
+  components: {
+    TodoList
+  },
   props: {
     todos: {}
   },
@@ -44,10 +41,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.command {
-  color: cornflowerblue;
-  cursor: pointer;
-}
-</style>
